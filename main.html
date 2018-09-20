@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <!--CDN for AJAX-->
@@ -15,25 +14,6 @@
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
     <script src="logic.js"></script>
-</head>
-
-<body>
-    <div id="artistDisplay"></div>
-    <div id="titleDisplay"></div>
-<div id="lyricsDisplay">Test</div>
-   
-</body>
-
-</html>
-
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-  <head>
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     <!--CDN for Firebase auth-->
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
@@ -43,8 +23,7 @@
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>DJ ChatBot</title>
   </head>
 
@@ -59,6 +38,9 @@
           <div class="row">
               <div class="col s2 left" id="music-info-div">
                   This is where the band/song/album info will be displayed.<br><br><br><br>
+                  <div id="artistDisplay"></div>
+                  <div id="titleDisplay"></div>
+                  <div id="lyricsDisplay">Test</div>
               </div>
               <div class="col s8 center" id="video-player-div">
                   This is where the YT vid player will go.
