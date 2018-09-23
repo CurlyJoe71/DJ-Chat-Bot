@@ -18,42 +18,66 @@
     <!--CDN for Firebase auth-->
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script src="logic.js"></script>
-    
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>DJ ChatBot</title>
-  </head>
+</head>
 
-  <body>
-      <div class="container">
-          <div class="row">
-              <div class="col-6 center">
-                  <img src="./assets/djchatbot.png" width="266px" height="246px">
-              </div>
-            
-          </div>
-          <div class="row">
-              <div class="col s2 left" id="music-info-div">
-                  This is where the band/song/album info will be displayed.<br><br><br><br>
-                  <div id="artistDisplay"></div>
-                  <div id="titleDisplay"></div>
-                  <div id="lyricsDisplay">Test</div>
-              </div>
-              <div class="col s8 center" id="video-player-div">
-                  This is where the YT vid player will go.
-              </div>
-              <div class="col s2 right" id="chatbot-div">
-                  This is where DJ ChatBot will reside.
-              </div>
-          </div>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">DJ ChatBot</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-6 center">
+            <img src="./assets/djchatbot.png" width="266px" height="246px">
+        </div>
 
+    </div>
+    <div class="row">
+        <div class="col s2 left" id="music-info-div">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Band Name</div>
+                    <div class="collapsible-body" id="cb-band"><span id="artistDisplay">The band name goes here.</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">radio</i>Album</div>
+                    <div class="collapsible-body" id="cb-album"><span id="titleDisplay">The name of the album goes
+                            here.</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">today</i>Year</div>
+                    <div class="collapsible-body" id="cb-year"><span>The year of the song/album goes here.</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">queue_music</i>Lyrics</div>
+                    <div class="collapsible-body" id="cb-band"><span id="lyricsDisplay">Lyrics of the song go here.</span></div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s7 center" id="video-player-div">
 
-      </div>
+            <iframe class="scrolling-video" width="630" height="472.5" src="https://www.youtube.com/embed/NsvjOrZOR5U"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="col s3 right" id="chatbot-div">
+            This is where DJ ChatBot will reside.
+        </div>
+    </div>
+</div>
+</body>
 
-    <!--JavaScript at end of body for optimized loading-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
 </html>

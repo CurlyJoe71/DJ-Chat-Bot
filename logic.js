@@ -8,10 +8,11 @@ var config = {
     messagingSenderId: "869856822775"
 };
 firebase.initializeApp(config);
+
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-// // The start method will wait until the DOM is loaded.
-// ui.start('#firebaseui-auth-container', uiConfig);
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
 
 var uiConfig = {
     callbacks: {
@@ -40,6 +41,9 @@ var uiConfig = {
     privacyPolicyUrl: '<your-privacy-policy-url>'
 };
 
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+
 var database = firebase.database();
 var connectionsRef = database.ref('/connections');
 var connectedRef = database.ref('.info/connected');
@@ -57,6 +61,10 @@ connectedRef.on("value", function (snap) {
         con.onDisconnect().remove();
     }
 });
+
+//user input variables
+
+
 //lyrics variables
 var lyricsAPIKey = '9oV6enzrwLxHjuKbkfEuYuwqkDly9pSPHix8gcozDfSIcJ4i4kyoXSZT491L7QhC';
 var lyricsURL = 'https://orion.apiseeds.com/api/music/lyric/:artist/:track'
@@ -102,4 +110,9 @@ function handleAPILoaded() {
       var str = JSON.stringify(response.result);
       $('#search-container').html('<pre>' + str + '</pre>');
     });
-  }
+  };
+
+
+  $(document).ready(function () {
+    $('.collapsible').collapsible();
+});
