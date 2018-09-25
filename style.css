@@ -5,3 +5,75 @@
 #chatbot-div {
     background-color: teal;
 }
+
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+  }
+  
+  body {
+    background: #9CECFB;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
+  
+[class*="col-"] {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+#music-info-div, #chatbot-div, .nav-wrapper {
+  background-color: #67d4f5;
+  
+}
+
+body {
+  background-image: url(./assets/round.png);
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.collapsible {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.collapsible-body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.container {
+  width: 80%;
+}
+
+#music-info-div {
+  padding: 10px;
+  float: left;
+}
+
+#video-player-div {
+  float: left;
+}
+#chatbot-div {
+   float: left;
+}
+
+#cb-lyrics {
+  font-size: 12px;
+}

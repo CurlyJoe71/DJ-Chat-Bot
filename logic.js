@@ -8,37 +8,6 @@ var config = {
     messagingSenderId: "869856822775"
 };
 firebase.initializeApp(config);
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-// // The start method will wait until the DOM is loaded.
-// ui.start('#firebaseui-auth-container', uiConfig);
-
-var uiConfig = {
-    callbacks: {
-        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-            // User successfully signed in.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            return true;
-        },
-        uiShown: function () {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-        }
-    },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInSuccessUrl: 'main.html',
-    signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    ],
-    // Terms of service url.
-    tosUrl: '<your-tos-url>',
-    // Privacy policy url.
-    privacyPolicyUrl: '<your-privacy-policy-url>'
-};
 
 var database = firebase.database();
 var connectionsRef = database.ref('/connections');
@@ -46,30 +15,42 @@ var connectedRef = database.ref('.info/connected');
 
 // When the client's connection state changes...
 connectedRef.on("value", function (snap) {
-
     // If they are connected..
     if (snap.val()) {
-
         // Add user to the connections list.
         var con = connectionsRef.push(true);
-
         // Remove user from the connection list when they disconnect.
         con.onDisconnect().remove();
     }
 });
-//lyrics variables
+
+//#band-input
+//#title-input
+//#submit-button
+
+//lyrics API variables
 var lyricsAPIKey = '9oV6enzrwLxHjuKbkfEuYuwqkDly9pSPHix8gcozDfSIcJ4i4kyoXSZT491L7QhC';
 var lyricsURL = 'https://orion.apiseeds.com/api/music/lyric/:artist/:track'
-var artistRequest = ''
+var bandInput = $('#band-input').val();
+var titleInput = $('#title-input').val();
 
-
-var spotifyAPIKey = '41f1e6b39f974a18bf48f26553dbb960';
 var youTubeAPIKey = 'AIzaSyDf7m2WR4gwTwBsU605wDNvuCydxt5GVU4';
 
+function pullQuery() {
+    bandInput = $('#band-input').val();
+    titleInput = $('#title-input').val();
+    console.log(bandInput);
+    console.log(titleInput);
+};
+
+function emptyQuery() {
+    $('#band-input').val('');
+    $('#title-input').val('');
+}
 
 function lyricsAJAX() {
     $.ajax({
-        url: 'https://orion.apiseeds.com/api/music/lyric/smashing pumpkins/1979?apikey=9oV6enzrwLxHjuKbkfEuYuwqkDly9pSPHix8gcozDfSIcJ4i4kyoXSZT491L7QhC',
+        url: 'https://orion.apiseeds.com/api/music/lyric/' + bandInput + '/' + titleInput + '?' + 'apikey=' + lyricsAPIKey,
         method: "GET"
     }).then(function (response) {
         console.log(response);
@@ -83,23 +64,43 @@ function lyricsAJAX() {
         titleDisplay.text(title);
         lyricsDisplay.text(lyrics);
     });
-}
+};
 
-// After the API loads, call a function to enable the search box.
-function handleAPILoaded() {
-    $('#search-button').attr('disabled', false);
-  }
-  
-  // Search for a specified string.
-  function search() {
-    var q = $('#query').val();
-    var request = gapi.client.youtube.search.list({
-      q: q,
-      part: 'snippet'
+//Calling the YouTube AJAX response
+var videoID;
+
+//GET https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=madonna&safeSearch=strict&type=video&videoEmbeddable=true&videoLicense=youtube&key={YOUR_API_KEY}
+
+
+function videoAJAX() {
+    $.ajax({
+        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=' + titleInput + '%2B' + bandInput + '&safeSearch=strict&type=video&videoEmbeddable=true&videoLicense=youtube&key=' + youTubeAPIKey,
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(response);
+        if (response.items[0].id.videoId) {
+            videoID = response.items[0].id.videoId;
+        }
+        else {
+            videoID = response.items[1].id.videoId;
+        }
+        console.log('videoID =' + videoID);
+
+        var newVideoURL = 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1&origin=http://127.0.0.1:5500/main.html';
+        console.log('new video URL =' + newVideoURL);
+
+        $('.scrolling-video').attr('src', newVideoURL);
     });
-  
-    request.execute(function(response) {
-      var str = JSON.stringify(response.result);
-      $('#search-container').html('<pre>' + str + '</pre>');
-    });
-  }
+};
+
+$(document).ready(function () {
+    $('.collapsible').collapsible();
+
+    $('#submit-button').on('click', function () {
+        pullQuery();
+        videoAJAX();
+        lyricsAJAX();
+        emptyQuery();
+    })
+});
