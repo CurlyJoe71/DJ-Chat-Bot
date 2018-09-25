@@ -2,107 +2,111 @@
 <html>
 
 <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <!--CDN for AJAX-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--CDN for Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+
+    <!--CDN for AJAX-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+
     <!--CDN for Firebase auth-->
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-    <script src="logic.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
-    <!--CDN for Firebase auth-->
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-    <!--JavaScript at end of body for optimized loading-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src="logic.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="logic.js"></script>
+
+
+
+
     <title>DJ ChatBot</title>
 </head>
 
 <body>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">DJ ChatBot</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="s12 center">
-                <img class="responsive-img" src="./chatbot-new-header.png" alt="DJ Chat Bot Logo">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">DJ ChatBot</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
             </div>
-
-        </div>
-
+        </nav>
         <div class="container">
             <div class="row">
                 <div class="s12 center">
-                    <div class="input-field col s6">
-                        <input id="band-input" type="text" class="validate">
-                        <label for="first_name">Band Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="title-input" type="text" class="validate">
-                        <label for="title-input">Song Name</label>
-                    </div>
-                    <button class="btn waves-effect waves-light" id="submit-button" type="submit" name="action">Submit
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <img class="responsive-img" src="assets/chatbot-new-header.png">
                 </div>
-
-
-                <div class="row">
-                    <div class="col-2 left" id="music-info-div">
-                        <ul class="collapsible">
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Band
-                                    Name</div>
-                                <div class="collapsible-body" id="artistDisplay"><span>The band name goes here.</span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">radio</i>Album</div>
-                                <div class="collapsible-body" id="titleDisplay"><span>The name of the album goes here.</span></div>
-                            </li>
-
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">queue_music</i>Lyrics</div>
-                                <div class="collapsible-body" id="lyricsDisplay"><span>Lyrics of the song go here.</span></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-7 center video-container" id="video-player-div">
-
-
-                        <iframe class="scrolling-video" width="630" height="472.5" src="https://www.youtube.com/embed/NsvjOrZOR5U"
-                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> Video goes
-                        here.
-                    </div>
-                    <div class="col-3 right" id="chatbot-div">
-                        This is where DJ ChatBot will reside.
-                    </div>
-                </div>
+    
             </div>
-
-
-            <script>
-                $(document).ready(function () {
-                    $('.collapsible').collapsible();
-                });
-            </script>
+    
+            <div class="container">
+                <div class="row">
+                    <div class="s12 center">
+                        <div class="input-field col s6">
+                            <input id="band-input" type="text" class="validate">
+                            <label for="first_name">Band Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="title-input" type="text" class="validate">
+                            <label for="title-input">Song Name</label>
+                        </div>
+                        <button class="btn waves-effect waves-teal" id="submit-button" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+    <br>
+    
+                    <div class="row">
+                        <div class="col-8 left video-container" id="video-player-div">
+    
+    
+                            <iframe class="scrolling-video" src="https://www.youtube.com/embed/NsvjOrZOR5U" frameborder="0"
+                                allow="autoplay; encrypted-media" allowfullscreen></iframe> Video goes here.
+                        </div>
+                        <br>
+                        <div class="col-4 right" id="music-info-div">
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Band Name</div>
+                                    <div class="collapsible-body" id="cb-band"><span>Band/Artist Name displayed here.</span></div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">radio</i>Song</div>
+                                    <div class="collapsible-body" id="cb-song"><span>Song Title displayed here.</span></div>
+                                </li>
+    
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">queue_music</i>Lyrics</div>
+                                    <div class="collapsible-body" id="lyricsDisplay"><span>Lyrics displayed here.</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+    
+    
+                </div>
+    
+                <!--JavaScript at end of body for optimized loading-->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                <script src="logic.js"></script>
 
 </body>
 

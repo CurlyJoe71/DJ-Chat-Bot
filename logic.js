@@ -24,10 +24,6 @@ connectedRef.on("value", function (snap) {
     }
 });
 
-//#band-input
-//#title-input
-//#submit-button
-
 //lyrics API variables
 var lyricsAPIKey = '9oV6enzrwLxHjuKbkfEuYuwqkDly9pSPHix8gcozDfSIcJ4i4kyoXSZT491L7QhC';
 var lyricsURL = 'https://orion.apiseeds.com/api/music/lyric/:artist/:track'
@@ -69,9 +65,6 @@ function lyricsAJAX() {
 //Calling the YouTube AJAX response
 var videoID;
 
-//GET https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=madonna&safeSearch=strict&type=video&videoEmbeddable=true&videoLicense=youtube&key={YOUR_API_KEY}
-
-
 function videoAJAX() {
     $.ajax({
         url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=' + titleInput + '%2B' + bandInput + '&safeSearch=strict&type=video&videoEmbeddable=true&videoLicense=youtube&key=' + youTubeAPIKey,
@@ -94,11 +87,25 @@ function videoAJAX() {
     });
 };
 
+//***USING JQUERY UI EFFECT***/
+function runEffect() {
+    // Run the effect
+    $("#userInput").hide('clip', 1000, callback);
+};
+// Callback function to bring a hidden box back
+function callback() {
+    setTimeout(function () {
+        $("#userInput").removeAttr("style").hide().fadeIn();
+    }, 1000);
+    $('#userInput').remove();
+};
+
 $(document).ready(function () {
     $('.collapsible').collapsible();
 
     $('#submit-button').on('click', function () {
         pullQuery();
+        runEffect();
         videoAJAX();
         lyricsAJAX();
         emptyQuery();
