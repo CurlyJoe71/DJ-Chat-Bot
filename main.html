@@ -29,55 +29,83 @@
     <title>DJ ChatBot</title>
 </head>
 
-<nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo">DJ ChatBot</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </div>
-</nav>
-<div class="container">
-    <div class="row">
-        <div class="col-6 center">
-            <img src="./assets/djchatbot.png" width="266px" height="246px">
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col s2 left" id="music-info-div">
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Band Name</div>
-                    <div class="collapsible-body" id="cb-band"><span id="artistDisplay">The band name goes here.</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">radio</i>Album</div>
-                    <div class="collapsible-body" id="cb-album"><span id="titleDisplay">The name of the album goes
-                            here.</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">today</i>Year</div>
-                    <div class="collapsible-body" id="cb-year"><span>The year of the song/album goes here.</span></div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">queue_music</i>Lyrics</div>
-                    <div class="collapsible-body" id="cb-band"><span id="lyricsDisplay">Lyrics of the song go here.</span></div>
-                </li>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">DJ ChatBot</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">About</a></li>
             </ul>
         </div>
-        <div class="col s7 center" id="video-player-div">
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="s12 center">
+                <img class="responsive-img" src="./chatbot-new-header.png" alt="DJ Chat Bot Logo">
+            </div>
 
-            <iframe class="scrolling-video" width="630" height="472.5" src="https://www.youtube.com/embed/NsvjOrZOR5U"
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-        <div class="col s3 right" id="chatbot-div">
-            This is where DJ ChatBot will reside.
-        </div>
-    </div>
-</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="s12 center">
+                    <div class="input-field col s6">
+                        <input id="band-input" type="text" class="validate">
+                        <label for="first_name">Band Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="title-input" type="text" class="validate">
+                        <label for="title-input">Song Name</label>
+                    </div>
+                    <button class="btn waves-effect waves-light" id="submit-button" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-2 left" id="music-info-div">
+                        <ul class="collapsible">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">record_voice_over</i>Band
+                                    Name</div>
+                                <div class="collapsible-body" id="artistDisplay"><span>The band name goes here.</span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">radio</i>Album</div>
+                                <div class="collapsible-body" id="titleDisplay"><span>The name of the album goes here.</span></div>
+                            </li>
+
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">queue_music</i>Lyrics</div>
+                                <div class="collapsible-body" id="lyricsDisplay"><span>Lyrics of the song go here.</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-7 center video-container" id="video-player-div">
+
+
+                        <iframe class="scrolling-video" width="630" height="472.5" src="https://www.youtube.com/embed/NsvjOrZOR5U"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> Video goes
+                        here.
+                    </div>
+                    <div class="col-3 right" id="chatbot-div">
+                        This is where DJ ChatBot will reside.
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                $(document).ready(function () {
+                    $('.collapsible').collapsible();
+                });
+            </script>
+
 </body>
+
+
 
 </html>
