@@ -80,9 +80,9 @@ function videoAJAX() {
         }
         console.log('videoID =' + videoID);
 
-        var newVideoURL = 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1&origin=http://127.0.0.1:5500/main.html';
+        var newVideoURL = 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1';
         console.log('new video URL =' + newVideoURL);
-
+        // &origin=http://127.0.0.1:5500/main.html
         $('.scrolling-video').attr('src', newVideoURL);
     });
 };
@@ -96,9 +96,50 @@ function runEffect() {
 function callback() {
     setTimeout(function () {
         $("#userInput").removeAttr("style").hide().fadeIn();
-    }, 1000);
-    $('#userInput').remove();
+    }, 7000);
 };
+
+//***CONNECTION CODE***//
+// var connectionsRef = database.ref('connections');
+// var connectedRef = database.ref('.info/connected');
+
+// connectedRef.on('value', function (snap) {
+
+//         if (snap.val()) {
+//             var con = connectionsRef.push({
+//                 playerName: '',
+//                 avatar: '',
+//                 move: ''
+//             });
+//             thisPlayerKey = con.key;
+//             console.log('thisPlayerKey is: ' + thisPlayerKey)
+//             con.onDisconnect().remove();
+//         };
+// });
+//***END OF CONNECTION CODE***/
+
+var band;
+var song;
+var submitBandSong;
+//gets the currently signed in user by using the currentUser property
+var user = firebase.auth().currentUser;
+if (user) {
+function submitBandSong() {
+   var data = {
+       initials: initialInput.value(),
+       band: band
+   }
+   var data = {
+       initials: initialInput.value(),
+       song: song
+   }
+   console.log(data);
+   var ref = database.ref('band', 'song');
+   ref.push(data);
+   }
+} else {
+   //no user is signed in
+}
 
 $(document).ready(function () {
     $('.collapsible').collapsible();
